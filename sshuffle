@@ -1,7 +1,7 @@
 from ftplib import FTP
 import argparse, paramiko, sys, os, hashlib, tarfile, logging, progressbar
 
-def create_progress_bar(file_size):
+def progress_bar_create(file_size):
     return progressbar.ProgressBar(maxval=file_size,
                                    widgets=[progressbar.Bar('=', '[', ']'), ' ', progressbar.Percentage()])
 
@@ -18,7 +18,7 @@ def download_directory(sftp, source_directory, local_directory):
             local_file = os.path.join(local_dir, file)
 
             file_size = sftp.stat(remote_file).st_size
-            bar = create_progress_bar(file_size)
+            bar = progress_bar_create(file_size)
             bar.start()
 
             def callback(bytes_so_far, total_size):
@@ -42,7 +42,7 @@ def upload_directory(ftp, destination_directory, local_directory):
             local_file = os.path.join(root, file)
             remote_file = os.path.join(destination_directory, relative_path, file)
 
-            bar = create_progress_bar(os.path.getsize(local_file))
+            bar = progress_bar_create(os.path.getsize(local_file))
             bar.start()
 
             def callback(bytes_so_far):
@@ -54,9 +54,6 @@ def upload_directory(ftp, destination_directory, local_directory):
             print("File uploaded successfully:", remote_file)
 
 def main():
-    # Command-line arguments parsing, logging setup, and other code stays the same
-
-    # Download directory using SCP
     logging.info("Downloading directory from %s:%s", args.source_host, args.source_directory)
 
     try:
@@ -81,7 +78,6 @@ def main():
                 logging.error("Checksum verification failed.")
                 sys.exit(1)
 
-        # Upload directory using FTP
         logging.info("Uploading directory to %s:%s", args.destination_host, args.destination_directory)
 
         with FTP(args.destination_host) as ftp:
