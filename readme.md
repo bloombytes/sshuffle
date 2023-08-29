@@ -29,29 +29,6 @@
 
 ### Command-line Options
 
-  > `--source-host`: Source host for SCP connection (required)
-  > 
-  > `--source-username`: Username for SCP connection (required)
-  > 
-  > `--source-password`: Password for SCP connection (required)
-  > 
-  > `--source-directory`: Path to source directory on the source host (required for directory transfer)
-  > 
-  > `--local-directory`: Path to a temporary local directory for download (required for directory transfer)
-  > 
-  > `--destination-directory`: Path to destination directory (required for directory transfer)
-  > 
-  > `--destination-host`: Destination host for FTP connection (required)
-  > 
-  > `--destination-username`: Username for FTP connection
-  > 
-  > `--destination-password`: Password for FTP connection
-  > 
-  > `--compress`: Compress the directory before transfer (optional)
-  > 
-  > `--verify`: Verify file integrity using checksum
-  > 
-  > `--ftp-port`: assign custom FTP port
   > 
   > `--anonymous`: Perform an anonymous FTP session 
   >   - (overrides `--destination-username` and `--destination-password`)
