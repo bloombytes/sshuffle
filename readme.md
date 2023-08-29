@@ -31,7 +31,6 @@
 
   > 
   > `--anonymous`: Perform an anonymous FTP session 
-  >   - (overrides `--destination-username` and `--destination-password`)
   > 
   
 <br>
